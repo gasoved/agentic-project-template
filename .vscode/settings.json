@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "never",
+    "source.organizeImports": "never",
+    "source.addMissingImports": "never"
+  },
+  "eslint.format.enable": false
+}
