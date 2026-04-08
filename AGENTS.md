@@ -10,8 +10,7 @@
 ## Verification
 
 - Verify each slice before committing when practical.
-- Prefer the root workspace scripts for verification: `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm check`.
-- Use `pnpm qa` for informational quality signals; keep it separate from the main pass/fail gate in `pnpm check`.
+- Run the project's format, lint, typecheck, and test commands before committing. If the project defines a single umbrella check command, prefer that.
 
 ## Testing
 
