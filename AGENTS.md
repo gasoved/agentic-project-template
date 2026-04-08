@@ -1,5 +1,14 @@
 # Workspace Notes
 
+## Repository structure
+
+This workspace uses two separate git repositories:
+
+- **Workspace repo** (this directory) — tracks coordination files: `AGENTS.md`, `spec/`, `tasks/`, and any workspace-level documentation. The project subdirectory is gitignored here.
+- **Project repo** (the project subdirectory) — tracks all implementation code, its own tooling config, and its own `.gitignore`. Initialized by the scaffold task.
+
+Keep commits in the correct repo. Do not mix workspace documentation commits with project implementation commits unless explicitly asked.
+
 ## Commits
 
 - Work in small, atomic commits; each commit should do one coherent thing.

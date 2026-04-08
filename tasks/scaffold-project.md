@@ -11,7 +11,11 @@ Initialize the project directory with the appropriate tooling, configuration, an
 
 ## Steps
 
-### 1. Determine tech stack and project shape
+### 1. Resolve project name
+
+Derive the project name from the root directory name (i.e., the name given to `gh repo create` or `degit`). Rename the `<project_name>/` directory to match. Update any references to `<project_name>` in `.gitignore` and other tracked files.
+
+### 2. Determine tech stack and project shape
 
 Read the spec and plan to identify:
 
@@ -20,14 +24,16 @@ Read the spec and plan to identify:
 - Key dependencies and integration points mentioned in the spec
 - Deployment targets if specified (affects build tooling choices)
 
-### 2. Initialize project structure
+### 3. Initialize project structure
 
 - Set up the project in the `<project_name>/` directory (rename to actual project name if not already done)
+- Initialize a git repository inside the project directory (`git init`) — the project has its own repo, separate from the workspace repo
+- Create the project's `.gitignore` appropriate to the stack (e.g., `node_modules/`, `dist/`, `__pycache__/`, `.venv/`, `.env`, etc.)
 - Create the package manifest (package.json, pyproject.toml, Cargo.toml, go.mod, etc.)
 - Create the directory layout appropriate to the stack and project shape
 - Do not create placeholder source files beyond what is needed for tooling to pass
 
-### 3. Set up code quality tooling
+### 4. Set up code quality tooling
 
 Choose tools appropriate to the stack. Prefer single-tool solutions over multi-tool stacks where available.
 
@@ -47,7 +53,7 @@ Configure each tool with sensible defaults:
 - Linter: start with the recommended rule set. Enable `max-lines` or equivalent file-length warnings if the stack supports it (e.g., 300 warn / 500 error for source files).
 - Type checking: strict mode where practical.
 
-### 4. Wire up verification commands
+### 5. Wire up verification commands
 
 Create an umbrella command that runs all checks in sequence (format check, lint, typecheck, test). This should be the single command an agent or developer runs to verify correctness.
 
@@ -60,18 +66,18 @@ Examples:
 
 The specific mechanism (package.json scripts, Makefile, just, shell script) should follow the stack's conventions.
 
-### 5. Set up environment and secrets handling
+### 6. Set up environment and secrets handling
 
 - Add `.env` to `.gitignore` if not already present
 - Create `.env.example` listing any environment variables the spec mentions, with placeholder values and brief comments
 - If no environment variables are known yet, create an empty `.env.example` with a comment explaining its purpose
 
-### 6. Set up minimal passing state
+### 7. Set up minimal passing state
 
 - Ensure all verification commands pass with zero warnings on the empty/minimal project
 - If the test runner requires at least one test file to not error, add a single trivial test (e.g., `assert true`) with a comment indicating it is a bootstrap placeholder
 
-### 7. Update CLAUDE.md
+### 8. Update CLAUDE.md
 
 Append a project-specific verification section to CLAUDE.md with:
 
@@ -79,6 +85,17 @@ Append a project-specific verification section to CLAUDE.md with:
 - Any stack-specific conventions the agent chose (e.g., "using Ruff for both formatting and linting")
 
 Do not remove or rewrite existing CLAUDE.md content -- only append the project-specific section.
+
+### 9. Generate README.md
+
+Create a `README.md` in the project directory with:
+
+- Project name and a one-line description derived from the spec
+- Setup instructions (how to install dependencies and configure environment)
+- How to run the project (if applicable at this stage)
+- How to run checks (the umbrella verification command)
+
+Keep it short — this is a starting point that will grow during implementation.
 
 ## Constraints
 
