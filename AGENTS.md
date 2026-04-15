@@ -74,3 +74,7 @@ Keep commits in the correct repo. Do not mix workspace documentation commits wit
 
 - Never commit secrets, API keys, or credentials. Use environment variables or `.env` files (gitignored) for sensitive configuration.
 - Document required environment variables in a `.env.example` file.
+
+## Local environment blockers
+
+- If a task is blocked by a local environment constraint that requires human intervention (e.g. Docker needing `sudo`, a missing system dependency, required credentials, or a permission issue), stop and notify the human immediately rather than attempting workarounds. Describe the blocker clearly and what action is needed to unblock it.
