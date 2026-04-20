@@ -59,6 +59,15 @@ Keep commits in the correct repo. Do not mix workspace documentation commits wit
 - If the project has a spec or plan document, load them into working context before planning or implementation.
 - Do not drift from the spec or plan during implementation unless there is a clear reason. If implementation pressure suggests a change, stop and get explicit user approval before proceeding.
 
+## Status assessment notes
+
+- Use `tasks/status.md` as the workspace file for live project status assessments.
+- If available, use the `project-status` repo skill for the preferred `tasks/status.md` workflow and template.
+- If it exists, load it before planning or implementation.
+- If meaningful cross-turn assessment context emerges and the file does not exist, create it.
+- Keep it short and current; remove or rewrite stale notes instead of appending history.
+- Treat `spec/` and task documents as authoritative for requirements and scope.
+
 ## Multi-agent coordination
 
 - When coordinating parallel agents, review actual commits (not just summaries) when commit ids are available.
